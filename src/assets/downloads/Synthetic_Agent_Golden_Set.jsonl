@@ -1,0 +1,5 @@
+{"case_id": "DEMO-001", "query": "Where can I find daily channel GMV?", "expected_intent": "resource_navigation", "expected_source": "SIM_ONLY", "contains_real_data": false}
+{"case_id": "DEMO-002", "query": "Explain demo budget pace", "expected_intent": "metric_definition", "expected_source": "SIM_ONLY", "contains_real_data": false}
+{"case_id": "DEMO-003", "query": "Generate synthetic weekly review", "expected_intent": "workflow_execution", "expected_source": "SIM_ONLY", "contains_real_data": false}
+{"case_id": "DEMO-004", "query": "Find product opportunities", "expected_intent": "product_hunting", "expected_source": "SIM_ONLY", "contains_real_data": false}
+{"case_id": "DEMO-005", "query": "Diagnose DEMO-SHOP-4821", "expected_intent": "seller_diagnosis", "expected_source": "SIM_ONLY", "contains_real_data": false}

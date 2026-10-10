@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DataPilot 电商数据分析 Agent 公开作品集演示" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232563EB'/%3E%3Cpath d='M18 42V30h7v12zm11 0V18h7v24zm11 0V25h7v17z' fill='white'/%3E%3C/svg%3E" />
+  <title>DataPilot · E-commerce Data Agent Demo</title>
+</head>
+<body>
+  <div id="root">
+  <header class="site-header">
+    <div class="brand-block">
+      <span class="brand-mark"><i></i><i></i><i></i></span>
+      <span><strong>DataPilot</strong><small>电商数据分析助手 · E-commerce Data Copilot</small></span>
+    </div>
+    <nav class="primary-nav" aria-label="核心模块">
+      <button class="primary-tab active" data-view="agent"><span>智能分析</span><small>Agent Studio</small></button>
+      <button class="primary-tab" data-view="hub"><span>资源中心</span><small>Resource Hub</small></button>
+      <button class="primary-tab" data-view="downloads"><span>下载中心</span><small>Download Center</small></button>
+    </nav>
+    <span class="safe-badge">公开演示 · Public Demo</span>
+  </header>
+
+  <main class="page-shell">
+    <div class="demo-notice"><span>i</span><p>本页面所有名称、标识符与数值均为本地生成的虚构数据；不连接任何公司系统，不包含真实业务数据、敏感信息或受限资源入口。</p></div>
+
+    <section class="view active" id="agentView">
+      <section class="ask-hero">
+        <div class="ask-copy">
+          <span class="eyebrow">DATAPILOT · 智能分析</span>
+          <h1>今天想解决什么数据问题？</h1>
+          <p>输入业务问题，DataPilot 会匹配分析流程、调用模拟数据并优先给出智能总结与诊断。</p>
+        </div>
+        <div id="smart-agent-root"></div>
+        <div class="quick-prompts" id="promptGrid"></div>
+      </section>
+      <section class="analysis-stage" id="analysisStage">
+        <div class="stage-empty" id="stageEmpty"><span>✦</span><strong>分析结果将在这里展开</strong><small>Analysis results will appear here</small></div>
+        <div id="smart-result-root"></div>
+        <div id="resultMount"></div>
+      </section>
+    </section>
+
+    <section class="view" id="hubView">
+      <div class="compact-intro"><div><span class="eyebrow">演示资源中心 · RESOURCE HUB</span><h1>集中查看模拟看板、本地查询预览、示例文件与交互工具。</h1></div><span>共 30 项资源</span></div>
+      <nav class="resource-tabs" id="resourceTabs">
+        <button class="active" data-resource-tab="dashboards"><span>仪表盘</span><small>Dashboards</small></button>
+        <button data-resource-tab="queries"><span>取数链接</span><small>Data Queries</small></button>
+        <button data-resource-tab="files"><span>重要文件</span><small>Important Files</small></button>
+        <button data-resource-tab="tools"><span>好用工具</span><small>Useful Tools</small></button>
+      </nav>
+      <div id="resourceContent"></div>
+    </section>
+
+    <section class="view" id="downloadsView">
+      <div class="compact-intro"><div><span class="eyebrow">模拟文件下载 · DOWNLOAD CENTER</span><h1>下载可直接用于作品集演示的本地虚构数据与评测文件。</h1></div><span>5 份文件</span></div>
+      <div class="download-grid" id="downloadGrid"></div>
+    </section>
+  </main>
+
+  <div class="modal-mask" id="modalMask"></div>
+  <aside class="dashboard-modal" id="dashboardModal" aria-hidden="true">
+    <div class="modal-head"><div><span id="modalGroup"></span><h2 id="modalTitle"></h2><small id="modalEnglish"></small></div><button id="closeModal">×</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </aside>
+  </div>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

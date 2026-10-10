@@ -1,0 +1,97 @@
+{
+  "name": "DataPilot Public Demo Knowledge Base",
+  "version": "public-demo-v1",
+  "sourceType": "Locally authored generic knowledge",
+  "entries": [
+    {
+      "id": "KB-001",
+      "type": "metric",
+      "category": "核心指标",
+      "question": "GMV 是什么，使用时要注意什么？",
+      "answer": "GMV 是统计周期内的成交金额。使用时需要同时确认支付或下单口径、是否扣除退款、币种、时间范围和商家范围。",
+      "keywords": "GMV 成交额 口径 支付 下单 退款",
+      "note": "不同口径的 GMV 不应直接比较。"
+    },
+    {
+      "id": "KB-002",
+      "type": "metric",
+      "category": "核心指标",
+      "question": "ROI 是什么，如何计算？",
+      "answer": "营销 ROI 常见口径是归因成交额除以营销成本；财务 ROI 也可能使用净收益除以成本。分析前必须确认分子、分母、归因窗口和币种。",
+      "keywords": "ROI 投入产出比 营销成本 归因成交额",
+      "note": "本演示中的预算 ROI 使用 Store GMV ÷ Merchant Spend。"
+    },
+    {
+      "id": "KB-003",
+      "type": "metric",
+      "category": "核心指标",
+      "question": "AOV 是什么？",
+      "answer": "AOV 是平均订单金额，常见计算为 GMV 除以订单量。应确认分母是主订单、子订单还是去重买家数。",
+      "keywords": "AOV 客单价 平均订单金额 订单量",
+      "note": "分母口径不同会显著影响结果。"
+    },
+    {
+      "id": "KB-004",
+      "type": "metric",
+      "category": "目标管理",
+      "question": "OKR 达成率如何分析？",
+      "answer": "OKR 达成率通常等于实际完成值除以目标值。应同时观察目标进度、时间进度和预计期末完成度。",
+      "keywords": "OKR 达成率 目标 时间进度",
+      "note": "只看静态达成率可能误判节奏。"
+    },
+    {
+      "id": "KB-005",
+      "type": "method",
+      "category": "异常诊断",
+      "question": "GMV 下降通常如何定位原因？",
+      "answer": "先排除数据更新和口径变化，再按流量、转化率、客单价拆解，并按渠道、类目、商家、商品和日期计算绝对贡献。",
+      "keywords": "GMV 下降 异常 归因 流量 转化 客单价",
+      "note": "区分已验证事实、待验证假设和数据缺口。"
+    },
+    {
+      "id": "KB-006",
+      "type": "method",
+      "category": "预算分析",
+      "question": "预算消耗快于时间进度怎么办？",
+      "answer": "先比较累计 ROI 与最新日 ROI，再按预算类型、日期和对象拆分消耗，优先复核高消耗且效率低于基准的组合。",
+      "keywords": "预算 消耗 进度 ROI 效率",
+      "note": "预算进度和经营效率需要并列判断。"
+    },
+    {
+      "id": "KB-007",
+      "type": "method",
+      "category": "渠道分析",
+      "question": "渠道表现应该看哪些指标？",
+      "answer": "至少同时观察渠道 GMV、占比、目标达成、日均值和趋势；若判断增量，还需要一致的归因规则或实验设计。",
+      "keywords": "渠道 GMV 占比 OKR DAGMV 趋势",
+      "note": "结构占比不等于增量贡献。"
+    },
+    {
+      "id": "KB-008",
+      "type": "method",
+      "category": "类目分析",
+      "question": "如何判断类目是否健康？",
+      "answer": "结合 GMV、增长率、商家数、商品数、AOV 和集中度判断，避免用单一增速替代供给质量。",
+      "keywords": "类目 品类 GMV 商家 商品 AOV 健康度",
+      "note": "规模、增长、效率和供给深度应同时覆盖。"
+    },
+    {
+      "id": "KB-009",
+      "type": "redline",
+      "category": "数据可信度",
+      "question": "数据不覆盖时应该怎么回答？",
+      "answer": "明确说明公开演示数据集不包含该字段或维度，并指向本地模拟资源入口，不补造具体业务数字。",
+      "keywords": "数据缺口 不包含 覆盖 边界",
+      "note": "可信边界优先于回答完整度。"
+    },
+    {
+      "id": "KB-010",
+      "type": "method",
+      "category": "数据质量",
+      "question": "分析前需要做哪些数据校验？",
+      "answer": "检查更新时间、时间范围、币种、过滤条件、去重规则、维度映射和汇总勾稽，并记录缺失值和异常值。",
+      "keywords": "数据质量 校验 更新时间 口径 去重 勾稽",
+      "note": "先验证数据，再解释业务。"
+    }
+  ]
+}
