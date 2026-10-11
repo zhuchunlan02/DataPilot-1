@@ -19,14 +19,14 @@ const missingRules: Array<[RegExp, string, string]> = [
 export const resolveAssetQuery = (query: string): AssetResolution => {
   const q = query.trim()
   const definitionOrMethod = /(是什么|什么意思|定义|怎么计算|如何计算|通常如何|怎么定位|分析方法|排查思路)/i.test(q)
-  const dataSignal = /(多少|哪天|最高|最低|最新|趋势|明细|表现|占比|达成|累计|日均|环比|对比|数据|查询|查看|统计|汇总|top|排名|预算|补贴|gmv|dagmv|okr|里程碑|(?:0|5|10|30|50)\s*\+|商家数|seller cnt)/i.test(q)
+  const dataSignal = /(多少|哪天|最高|最低|最新|趋势|明细|表现|占比|达成|累计|日均|环比|对比|数据|查询|查看|统计|汇总|top|排名|预算|补贴|gmv|dagmv|okr|pontos|流量扶持|扶持转化|(?:0|5|10|30|50)\s*\+|商家数|seller cnt)/i.test(q)
   if (definitionOrMethod && !/(查询|查看|多少|数据)/i.test(q)) return { isDataQuestion: false, datasets: [] }
   if (!dataSignal) return { isDataQuestion: false, datasets: [] }
   for (const [rule, reason, resource] of missingRules) if (rule.test(q)) return { isDataQuestion: true, datasets: [], missing: { reason, resource } }
 
   const ids = new Set<string>()
   if (has(q, /(预算|补贴|spend|merchant spend|store gmv|campaign|assortment|voucher|new listing|reinvestment|补贴率|roi)/i)) ids.add('budget')
-  if (has(q, /(里程碑|(?:0|5|10|30|50)\s*\+|加速组转化率|贡献率|分子|分母|广告转化)/i)) ids.add('ads')
+  if (has(q, /(pontos|流量扶持|扶持转化|(?:0|5|10|30|50)\s*\+|加速组转化率|贡献率|分子|分母|广告转化)/i)) ids.add('ads')
   if (has(q, /(分渠道|渠道|overall|creator|达人分层|top creator|mass creator|self-sell|self-live|affiliate|dagmv|okr|成交额|gmv)/i)) ids.add('channel')
   if (has(q, /(商家层级|seller cnt|商家数|uplift|withdrawal|类目gmv|category gmv|creator side|merchant side|预算单)/i)) ids.add('merchant')
   if (has(q, /(周报|周度复盘|整体经营)/i)) { ids.add('channel'); ids.add('budget'); ids.add('merchant') }
@@ -85,7 +85,7 @@ export const buildAssetFallback = (query: string, datasets: AssetDataset[]) => {
       const sum = ds.rows.find(row => row[0] === 'SUM') || []
       const dated = ds.rows.filter(row => /^\d{4}-\d{2}-\d{2}$/.test(row[0] || ''))
       const latest = dated.at(-1) || []
-      parts.push(`广告转化数据：汇总 0+ / 5+ / 10+ / 30+ / 50+ 里程碑转化率分别为 ${sum[1]}、${sum[6]}、${sum[11]}、${sum[16]}、${sum[21]}；最新日期 ${latest[0]} 的对应值为 ${latest[1]}、${latest[6]}、${latest[11]}、${latest[16]}、${latest[21]}。`)
+      parts.push(`流量扶持数据：汇总 0+ / 5+ / 10+ / 30+ / 50+ 扶持转化率分别为 ${sum[4]}、${sum[9]}、${sum[14]}、${sum[19]}、${sum[24]}；最新日期 ${latest[0]} 的对应值为 ${latest[4]}、${latest[9]}、${latest[14]}、${latest[19]}、${latest[24]}。`)
     }
     if (ds.id === 'merchant') {
       const selected = selectRows(ds, query).filter(row => row.some(Boolean)).slice(0, 8)

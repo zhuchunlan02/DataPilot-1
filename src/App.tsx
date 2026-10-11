@@ -254,8 +254,8 @@ export default function App() {
   return <>
     <form className="ask-box smart-ask-box" onSubmit={submit}>
       <div className="smart-mode-row"><span><i /> 公开演示模式 · LOCAL LOGIC + SYNTHETIC DATA</span><small>4 张本地模拟数据表 + {KNOWLEDGE_ENTRIES.length} 条通用知识；无网络请求</small></div>
-      <textarea id="queryInput" rows={3} value={input} onChange={e => setInput(e.target.value)} onKeyDown={onKeyDown} placeholder="例如：查询整体渠道 GMV、预算 ROI 或里程碑转化率" />
-      <div className="smart-suggestions">{['整体渠道最新 GMV 是多少？','预算累计 ROI 如何？','最新日期各里程碑转化率是多少？'].map(item => <button type="button" key={item} onClick={() => setInput(item)}>{item}</button>)}</div>
+      <textarea id="queryInput" rows={3} value={input} onChange={e => setInput(e.target.value)} onKeyDown={onKeyDown} placeholder="例如：查询整体渠道 GMV、预算 ROI 或流量扶持转化率" />
+      <div className="smart-suggestions">{['整体渠道最新 GMV 是多少？','预算累计 ROI 如何？','最新日期流量扶持转化率是多少？'].map(item => <button type="button" key={item} onClick={() => setInput(item)}>{item}</button>)}</div>
       <div className="ask-actions"><span>数据问题先校验资产覆盖；未覆盖时明确推荐对应取数入口</span><button id="sendBtn" type="submit" disabled={state === 'working'}><span className="run-copy"><strong>{state === 'working' ? '正在分析' : '智能提问'}</strong><small>{state === 'working' ? 'Agent working' : 'Ask DataPilot'}</small></span><b>{state === 'working' ? '…' : '→'}</b></button></div>
     </form>
     {resultRoot && state !== 'idle' ? createPortal(<SmartResult state={state} answer={answer} analysis={analysis} steps={steps} question={question} onRetry={() => void submitLocalAnalysis(question)} />, resultRoot) : null}

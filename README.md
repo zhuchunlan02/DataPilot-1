@@ -12,10 +12,11 @@ DataPilot is a portfolio-ready e-commerce data analysis agent demo built with Vi
 ## Product capabilities
 
 - Six deterministic analysis scenarios: budget, channel GMV, product hunting, weekly review, seller performance and category performance.
-- Natural-language routing for metric definitions, GMV diagnosis, local dataset analysis and out-of-scope questions.
+- Natural-language routing for metric definitions, GMV diagnosis, traffic-support conversion analysis, local dataset analysis and out-of-scope questions.
 - Rich analysis output with visible chart values, KPI cards, comparison bars, detail tables and action recommendations.
-- Resource hub with local interactive previews.
-- Download center with synthetic sample files.
+- One-stop resource hub for dashboards, data queries, important files and frequently used tools.
+- Team co-creation space with a browser-local resource suggestion board.
+- Download center with synthetic sample files and a platform-neutral public AI Skill sample package.
 - Responsive desktop, tablet and mobile layouts.
 
 ## Local development

@@ -148,32 +148,32 @@ function buildAds(datasets: AssetDataset[]): AnalysisResult | null {
   const levels = [{ name: '0+', rate: 1, support: 4, ratio: 3 }, { name: '5+', rate: 6, support: 9, ratio: 8 }, { name: '10+', rate: 11, support: 14, ratio: 13 }, { name: '30+', rate: 16, support: 19, ratio: 18 }, { name: '50+', rate: 21, support: 24, ratio: 23 }]
   const requested = levels.slice(0, 3)
   const recent = rows.slice(-10)
-  const latestRates = requested.map(level => numeric(latest[level.rate]))
-  const sumRates = requested.map(level => numeric(sum[level.rate]))
+  const latestRates = requested.map(level => numeric(latest[level.support]))
+  const sumRates = requested.map(level => numeric(sum[level.support]))
   return {
     kind: 'ads',
     isSynthetic: true,
-    title: '里程碑转化率深度分析',
-    titleEn: 'Milestone Conversion Analysis',
+    title: '流量扶持转化率深度分析',
+    titleEn: 'Traffic Support Conversion Analysis',
     period: `最新日期 ${latest[0]} · 近 10 个有数日`,
-    headline: `${latest[0]} 的 0+ / 5+ / 10+ 里程碑转化率分别为 ${latest[1]}、${latest[6]}、${latest[11]}。`,
+    headline: `${latest[0]} 的 0+ / 5+ / 10+ 流量扶持转化率分别为 ${latest[4]}、${latest[9]}、${latest[14]}。`,
     summary: [
-      { label: '最新结果', text: `0+ 为 ${latest[1]}，5+ 为 ${latest[6]}，10+ 为 ${latest[11]}。` },
+      { label: '最新结果', text: `流量扶持组 0+ 为 ${latest[4]}，5+ 为 ${latest[9]}，10+ 为 ${latest[14]}。` },
       { label: '相对汇总', text: `相对全期汇总，0+ ${latestRates[0] >= sumRates[0] ? '高' : '低'} ${(Math.abs(latestRates[0] - sumRates[0])).toFixed(2)}pp，5+ ${latestRates[1] >= sumRates[1] ? '高' : '低'} ${Math.abs(latestRates[1] - sumRates[1]).toFixed(2)}pp，10+ ${latestRates[2] >= sumRates[2] ? '高' : '低'} ${Math.abs(latestRates[2] - sumRates[2]).toFixed(2)}pp。`, tone: latestRates.filter((value, index) => value >= sumRates[index]).length >= 2 ? 'positive' : 'warning' },
-      { label: '加速组观察', text: `最新日加速组转化率为 0+ ${latest[4]}、5+ ${latest[9]}、10+ ${latest[14]}，需与自然转化率分开解释。` },
+      { label: '自然组对照', text: `同日自然转化率为 0+ ${latest[1]}、5+ ${latest[6]}、10+ ${latest[11]}，需与流量扶持效果分开解释。` },
     ],
-    kpis: requested.map((level, index) => ({ label: `${level.name} 里程碑转化率`, labelEn: `${level.name} Conversion`, value: latest[level.rate] || '—', note: `全期汇总 ${sum[level.rate] || '—'}`, tone: latestRates[index] >= sumRates[index] ? 'positive' : 'warning' })),
-    chart: { title: '近 10 个有数日转化率趋势', titleEn: '10-Day Conversion Trend', labels: recent.map(row => row[0].slice(5)), series: requested.map((level, index) => ({ name: level.name, color: ['#2563EB','#7C3AED','#059669'][index], values: recent.map(row => numeric(row[level.rate])) })), unit: 'percent' },
-    comparison: { title: '最新日自然组 vs 加速组转化', titleEn: 'Organic vs Accelerated', items: levels.map((level, index) => ({ label: level.name, value: numeric(latest[level.rate]), display: `${latest[level.rate]} / 加速组 ${latest[level.support]}`, color: ['#2563EB','#7C3AED','#059669','#EA580C','#E11D48'][index] })) },
-    table: { title: '最新日里程碑明细', titleEn: 'Latest Milestone Detail', headers: ['里程碑', '自然转化率', '全期汇总', '贡献率', '分子 / 分母', '加速组转化率', '加速组分子 / 分母'], rows: levels.map(level => [level.name, latest[level.rate], sum[level.rate], latest[level.rate + 1], latest[level.ratio], latest[level.support], latest[level.support + 1]]) },
+    kpis: requested.map((level, index) => ({ label: `${level.name} 流量扶持转化率`, labelEn: `${level.name} Support Conversion`, value: latest[level.support] || '—', note: `全期汇总 ${sum[level.support] || '—'}`, tone: latestRates[index] >= sumRates[index] ? 'positive' : 'warning' })),
+    chart: { title: '近 10 个有数日流量扶持转化率趋势', titleEn: '10-Day Support Conversion Trend', labels: recent.map(row => row[0].slice(5)), series: requested.map((level, index) => ({ name: level.name, color: ['#2563EB','#7C3AED','#059669'][index], values: recent.map(row => numeric(row[level.support])) })), unit: 'percent' },
+    comparison: { title: '最新日自然转化 vs 流量扶持转化', titleEn: 'Organic vs Traffic Support', items: levels.map((level, index) => ({ label: level.name, value: numeric(latest[level.support]), display: `扶持 ${latest[level.support]} / 自然 ${latest[level.rate]}`, color: ['#2563EB','#7C3AED','#059669','#EA580C','#E11D48'][index] })) },
+    table: { title: '最新日流量扶持转化明细', titleEn: 'Latest Traffic Support Detail', headers: ['转化层级', '流量扶持转化率', '扶持组全期汇总', '自然转化率', '贡献率', '自然组分子 / 分母', '扶持组分子 / 分母'], rows: levels.map(level => [level.name, latest[level.support], sum[level.support], latest[level.rate], latest[level.rate + 1], latest[level.ratio], latest[level.support + 1]]) },
     diagnosis: [
-      `数据已证实：最新日 0+ / 5+ / 10+ 分别为 ${latest[1]}、${latest[6]}、${latest[11]}。`,
-      `数据已证实：0+ 相对全期汇总差异为 ${(latestRates[0] - sumRates[0]).toFixed(2)}pp。`,
-      '解释限制：不同里程碑的分子、分母不同，不能把层级间差值直接解释为同一漏斗流失。',
+      `数据已证实：最新日流量扶持组 0+ / 5+ / 10+ 分别为 ${latest[4]}、${latest[9]}、${latest[14]}。`,
+      `数据已证实：扶持组 0+ 相对全期汇总差异为 ${(latestRates[0] - sumRates[0]).toFixed(2)}pp。`,
+      '解释限制：不同转化层级的分子、分母不同，不能把层级间差值直接解释为同一漏斗流失。',
     ],
-    actions: ['先关注相对全期汇总低于基准的里程碑，再查看对应分子/分母规模。', '自然组与加速组转化率分栏监控，避免将加速效果误当作自然转化。', '若需定位具体商家或广告素材，前往资源中心的广告投流与转化查询入口。'],
+    actions: ['先关注相对全期汇总低于基准的扶持转化层级，再查看对应分子/分母规模。', '自然转化与流量扶持转化分栏监控，避免将扶持效果误当作自然经营改善。', '若需定位具体商家或广告素材，前往资源中心的广告投流与转化查询入口。'],
     source: `${ds.title} · ${ds.rowCount} 行 × ${ds.columnCount} 列`,
-    methodology: '最新日取日期行中的最后一个有数日；全期基准取 SUM 行；pp 为百分点差。',
+    methodology: '最新日取日期行中的最后一个有数日；流量扶持转化率读取扶持组字段；全期基准取 SUM 行；pp 为百分点差。',
   }
 }
 
@@ -368,7 +368,7 @@ export const buildScenarioAnalysis = (scenarioId: DemoScenarioId, datasets: Asse
 }
 
 export const buildAnalysisResult = (query: string, datasets: AssetDataset[]): AnalysisResult | null => {
-  if (/里程碑|(?:0|5|10|30|50)\s*\+|广告转化/i.test(query)) return buildAds(datasets)
+  if (/pontos|流量扶持|扶持转化|(?:0|5|10|30|50)\s*\+|广告转化/i.test(query)) return buildAds(datasets)
   if (/预算|补贴|roi|spend|campaign|assortment/i.test(query)) return buildBudget(datasets)
   if (/gmv|成交额|渠道|dagmv|okr|周报|整体经营/i.test(query)) return buildChannel(datasets)
   return null

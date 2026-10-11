@@ -3,6 +3,7 @@ import weeklyReview from '../assets/downloads/Synthetic_Weekly_Business_Review.x
 import budgetTracker from '../assets/downloads/Synthetic_Merchant_Budget_Tracker.xlsx?url'
 import huntingList from '../assets/downloads/Synthetic_Hunting_List.csv?url'
 import goldenSet from '../assets/downloads/Synthetic_Agent_Golden_Set.jsonl?url'
+import publicAiSkill from '../assets/downloads/Public_Ecommerce_Analysis_AI_Skill.zip?url'
 
 window.DATAPILOT_DATA = {
   scenarios: [
@@ -17,7 +18,7 @@ window.DATAPILOT_DATA = {
     {id:'overall',group:'整体追踪',groupEn:'Overall',name:'整体经营日报',en:'Overall Daily Report',desc:'核心目标、日均成交额、渠道、供给与商品排行的一站式经营概览。',tone:'amber'},
     {id:'sellerBoard',group:'商家侧',groupEn:'Seller',name:'商家经营追踪',en:'Seller Performance Dashboard',desc:'商家经营评分、成交额趋势、热销商品和广告效率。',tone:'rose'},
     {id:'creatorBoard',group:'达人侧',groupEn:'Creator',name:'分渠道每日成交额追踪',en:'Daily GMV Tracking by Channel',desc:'整体、达人、自卖与广告渠道的目标达成和每日明细。',tone:'violet'},
-    {id:'milestone',group:'广告侧',groupEn:'Ads',name:'里程碑转化每日追踪',en:'Milestone Conversion Tracking',desc:'投流消耗、转化率与不同订单里程碑的每日变化。',tone:'green'},
+    {id:'pontos',group:'广告侧',groupEn:'Ads',name:'Pontos 转化每日追踪',en:'Pontos Conversion Tracking',desc:'投流消耗、Pontos 转化率与不同订单层级的每日变化。',tone:'green'},
     {id:'budgetBoard',group:'策略侧',groupEn:'Strategy',name:'预算补贴每日追踪',en:'Budget Daily Tracking',desc:'季度、月度预算进度与分天分类型消耗明细。',tone:'blue'},
     {id:'pnl',group:'策略侧',groupEn:'Strategy',name:'损益追踪',en:'PNL Tracking',desc:'收入、成本、结算成交额与利润率的结构化分析。',tone:'cyan'}
   ],
@@ -58,6 +59,7 @@ window.DATAPILOT_DATA = {
     {type:'XLSX',name:'团队周度经营复盘',en:'Weekly Business Review',desc:'成交额、渠道、商家层级与预算复盘样例。',meta:'2 个工作表',file:weeklyReview},
     {type:'XLSX',name:'商家预算追踪表',en:'Merchant Budget Tracker',desc:'预算类型、消耗进度、投入产出比与状态。',meta:'1 个工作表',file:budgetTracker},
     {type:'CSV',name:'周度选品清单',en:'Weekly Hunting List',desc:'40 条商品级模拟选品数据。',meta:'40 行',file:huntingList},
-    {type:'JSONL',name:'DataPilot 评测样例集',en:'DataPilot Golden Set',desc:'意图识别、资源召回与输出完整性测试。',meta:'5 个样例',file:goldenSet}
+    {type:'JSONL',name:'DataPilot 评测样例集',en:'DataPilot Golden Set',desc:'意图识别、资源召回与输出完整性测试。',meta:'5 个样例',file:goldenSet},
+    {type:'SKILL',name:'电商分析 AI Skill 示例包',en:'Public E-commerce Analysis AI Skill',desc:'平台无关的公开示例，包含 SKILL.md、manifest、安装说明和模拟输入输出。',meta:'ZIP · Prompt-only · Public',file:publicAiSkill}
   ]
 };

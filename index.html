@@ -43,7 +43,7 @@
     </section>
 
     <section class="view" id="hubView">
-      <div class="compact-intro"><div><span class="eyebrow">演示资源中心 · RESOURCE HUB</span><h1>集中查看模拟看板、本地查询预览、示例文件与交互工具。</h1></div><span>共 30 项资源</span></div>
+      <div class="compact-intro"><div><span class="eyebrow">演示资源中心 · RESOURCE HUB</span><h1>一站式查询数据看板/取数链接/重要文件/常用工具</h1></div><span>共 30 项资源</span></div>
       <nav class="resource-tabs" id="resourceTabs">
         <button class="active" data-resource-tab="dashboards"><span>仪表盘</span><small>Dashboards</small></button>
         <button data-resource-tab="queries"><span>取数链接</span><small>Data Queries</small></button>
@@ -51,10 +51,30 @@
         <button data-resource-tab="tools"><span>好用工具</span><small>Useful Tools</small></button>
       </nav>
       <div id="resourceContent"></div>
+      <section class="team-space" id="teamSpace">
+        <div class="team-space-head"><div><span>TEAM CO-CREATION SPACE</span><h2>团队共创资源共享空间</h2><p>提交资源建议、共享使用经验，让看板、文件、工具与 AI Skill 在团队内持续沉淀。</p></div><b>LOCAL DEMO</b></div>
+        <div class="team-space-grid">
+          <div class="co-create-flow">
+            <article><b>01</b><div><strong>提交资源</strong><small>看板、取数链接、文件或 Skill</small></div></article>
+            <article><b>02</b><div><strong>补充场景</strong><small>说明用途、频率与适用对象</small></div></article>
+            <article><b>03</b><div><strong>团队评审</strong><small>确认口径、质量和共享边界</small></div></article>
+            <article><b>04</b><div><strong>沉淀复用</strong><small>进入资源中心供团队持续使用</small></div></article>
+          </div>
+          <div class="team-board">
+            <div class="team-board-title"><div><strong>共创留言板</strong><small>Co-creation Board</small></div><span>仅保存于当前浏览器</span></div>
+            <div class="team-messages" id="teamMessages"></div>
+            <form class="team-message-form" id="teamMessageForm">
+              <div><input id="teamMemberName" maxlength="20" placeholder="你的名字 / 团队"><select id="teamResourceType"><option>看板建议</option><option>取数链接</option><option>重要文件</option><option>常用工具</option><option>AI Skill</option></select></div>
+              <textarea id="teamMessageText" maxlength="180" placeholder="分享一个资源、使用经验或改进建议…" required></textarea>
+              <button type="submit">发布留言 · Post</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </section>
 
     <section class="view" id="downloadsView">
-      <div class="compact-intro"><div><span class="eyebrow">模拟文件下载 · DOWNLOAD CENTER</span><h1>下载可直接用于作品集演示的本地虚构数据与评测文件。</h1></div><span>5 份文件</span></div>
+      <div class="compact-intro"><div><span class="eyebrow">模拟文件与 AI SKILL · DOWNLOAD CENTER</span><h1>下载可公开使用的模拟数据、评测文件与 AI Skill 示例安装包。</h1></div><span>6 份文件</span></div>
       <div class="download-grid" id="downloadGrid"></div>
     </section>
   </main>
